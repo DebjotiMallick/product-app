@@ -10,4 +10,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true    
+    show-sql: true  
+    
+    
+server:
+  port: 9090    
+      
+    
