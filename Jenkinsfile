@@ -49,7 +49,7 @@ bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify/)
 
 stage('Deploy') {
 
-bat 'curl -u admin:admin -T target/**.war "http://localhost:5050/manager/text/deploy?path=/ibmdevops&update=true"';
+bat 'curl -u admin:admin -T product-app-0.0.1.war "http://localhost:5050/manager/text/deploy?path=/ibmdevops&update=true"';
 
 }
 
