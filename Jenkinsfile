@@ -4,7 +4,7 @@ def mvnHome
 
 stage('Prepare') {
 
-git url: 'git@github.com:krishnamurthypradeep/newdevops-springboot.git', branch: 'develop'
+git url: 'git@github.com:DebjotiMallick/product-app.git', branch: 'develop'
 
 mvnHome = tool 'mvn'
 
@@ -46,29 +46,16 @@ bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify/)
 
 }
 
-stage('Sonar') {
-
-if (isUnix()) {
-
-sh "'${mvnHome}/bin/mvn' sonar:sonar"
-
-} else {
-
-bat(/"${mvnHome}\bin\mvn" sonar:sonar/)
-
-}
-
-}
 
 stage('Deploy') {
 
-sh 'curl -u admin:admin -T target/**.war "http://localhost:7080/manager/text/deploy?path=/ibmdevops&update=true"&#39;
+sh 'curl -u admin:admin -T target/**.war "http://localhost:9080/manager/text/deploy?path=/ibmdevops&update=true"&#39;
 
 }
 
 stage("Smoke Test"){
 
-sh "curl --retry-delay 10 --retry 5 http://localhost:7080/ibmdevops/api/v1/products&quot;
+sh "curl --retry-delay 10 --retry 5 http://localhost:5050/ibmdevops/api/v1/products&quot;
 
 }
 
