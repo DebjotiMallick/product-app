@@ -12,5 +12,5 @@ public class ProductAppApplication {
 	}
 
 	
-	// Just to test
+	// Just to test webhook relay
 }
